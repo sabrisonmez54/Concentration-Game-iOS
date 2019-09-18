@@ -10,13 +10,13 @@ import Foundation
 //struct is like a class except doesn't have inheritence, passed by value, if you change it nothing happens to where it came from, a class passed by reference changes for everybody. When you pass struct it doesn't get copied right away, only when changed.
 struct Card
 {
-    var isFaceUp = false
-    var isMatched = false
-    var identifier : Int
+    internal var isFaceUp = false
+    internal var isMatched = false
+    internal var identifier : Int
     
-    static var identifierFactory = 0
+    private static var identifierFactory = 0
     
-    static func getUniqueIdentifier() -> Int
+    private static func getUniqueIdentifier() -> Int
     {
         Card.identifierFactory += 1
         return Card.identifierFactory
