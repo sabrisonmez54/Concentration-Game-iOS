@@ -47,6 +47,7 @@ class WelcomeScreenViewController: UIViewController {
             startNewGame.setTitleColor(#colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1), for: .normal)
             controlView.backgroundColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
             playAnimation(animationName: "3124-halloween-smoothymon")
+            halloweenTheme = true
         }
     }
     @IBAction func startNewGameClicked(_ sender: Any) {
@@ -59,22 +60,11 @@ class WelcomeScreenViewController: UIViewController {
             let gameVC = segue.destination as! ViewController
             if halloweenTheme == true{
                  gameVC.emojiChoices = ["👻","🎃","☠️","👹","🍎","🧟‍♂️","🍬","🍫","🍭"]
-                 
+                 gameVC.halloweenTheme = true
             }else{
-                 gameVC.emojiChoices = ["🥎","⚽️","🏀","⛷","🏊‍♀️","🏈","🚴🏻‍♂️","⚾️","🥊"]
+                 gameVC.emojiChoices = ["🎾","⚽️","🏀","⛷","🏊‍♀️","🏈","🚴🏻‍♂️","⚾️","🥊"]
+                 gameVC.halloweenTheme = false
             }
-           
-            //"👻","🎃","☠️","👹","🍎","🧟‍♂️","🍬","🍫","🍭"
         }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     }
 }
