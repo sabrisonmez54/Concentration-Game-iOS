@@ -60,7 +60,8 @@ class ViewController: UIViewController
 //            return emoji[card.identifier]!
 //        }
 //        else {return "?"}
-                                                //convert to unsigned int32
+//convert to unsigned int32
+        
         //2 if statements can be written like this:
         if emoji[card.identifier] == nil , emojiChoices.count > 0
         {
@@ -84,7 +85,10 @@ class ViewController: UIViewController
     
     private func updateViewFromModel()
     {
-        if numberOfPairsOfcards - game.numberOfMatches > 0{
+        //check if there are cards remaining
+        if numberOfPairsOfcards - game.numberOfMatches > 0
+        {
+            //updateLabels coming from model
             flipCountLabel.text = "Flips: \(game.flipCount)"
             scoreCountLabel.text = "Score: \(game.scoreCount)"
             for index in cardButtons.indices
@@ -103,17 +107,23 @@ class ViewController: UIViewController
                     {
                         button.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
                     
-                    }else{
-                        if halloweenTheme == true{
+                    }
+                    else
+                    {
+                        if halloweenTheme == true
+                        {
                             button.backgroundColor = #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)
-                        }else{
+                        }
+                        else
+                        {
                             button.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)}
                     }
                 }
             }
         }
-        else{
-            print("cards done")
+        else
+        {
+            //If no cards are remaining create an alert to the user
             // create the alert
             let alert = UIAlertController(title: "Game Over!", message: "You have matched every card. Your score is \(game.scoreCount) in \(game.flipCount) flips.", preferredStyle: UIAlertController.Style.alert)
             
@@ -124,19 +134,27 @@ class ViewController: UIViewController
             self.present(alert, animated: true, completion: nil)
         }
     }
-    
-    func alertHandler(alert: UIAlertAction!){
+    //handler for alert
+    func alertHandler(alert: UIAlertAction!)
+    {
          self.performSegue(withIdentifier: "gameToWelcome", sender: self)
     }
 }
 
-extension Int{
-    var arc4random: Int{
-        if(self > 0){
+extension Int
+{
+    var arc4random: Int
+    {
+        if(self > 0)
+        {
             return Int(arc4random_uniform(UInt32(self)))
-        }else if (self < 0){
+        }
+        else if (self < 0)
+        {
             return Int(arc4random_uniform(UInt32(-self)))
-        }else{
+        }
+        else
+        {
             return 0
         }
     }

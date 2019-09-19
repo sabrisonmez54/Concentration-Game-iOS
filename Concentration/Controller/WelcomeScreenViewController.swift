@@ -8,7 +8,8 @@
 
 import UIKit
 import Lottie
-class WelcomeScreenViewController: UIViewController {
+class WelcomeScreenViewController: UIViewController
+{
     @IBOutlet var controlView: UIView!
     @IBOutlet weak var startNewGame: UIButton!
     
@@ -17,13 +18,15 @@ class WelcomeScreenViewController: UIViewController {
     
     var halloweenTheme = true
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         playAnimation(animationName: "3124-halloween-smoothymon")
         // Do any additional setup after loading the view.
     }
     
-    func playAnimation(animationName: String){
+    func playAnimation(animationName: String)
+    {
         animationView.animationView.setAnimation(named: "\(animationName)")
         animationView.animationView.loopAnimation = true
         animationView.animationView.play()
@@ -40,7 +43,8 @@ class WelcomeScreenViewController: UIViewController {
             halloweenTheme = false
            
         }
-        else {
+        else
+        {
             changeThemeButton.backgroundColor = #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)
             changeThemeButton.setTitleColor(#colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1), for: .normal)
             startNewGame.backgroundColor = #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)
@@ -50,18 +54,25 @@ class WelcomeScreenViewController: UIViewController {
             halloweenTheme = true
         }
     }
-    @IBAction func startNewGameClicked(_ sender: Any) {
+    
+    @IBAction func startNewGameClicked(_ sender: Any)
+    {
         self.performSegue(withIdentifier: "WelcomeScreenToGame", sender: self)
        
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "WelcomeScreenToGame"){
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if(segue.identifier == "WelcomeScreenToGame")
+        {
             let gameVC = segue.destination as! ViewController
-            if halloweenTheme == true{
+            if halloweenTheme == true
+            {
                  gameVC.emojiChoices = ["👻","🎃","☠️","👹","🍎","🧟‍♂️","🍬","🍫","🍭"]
                  gameVC.halloweenTheme = true
-            }else{
+            }
+            else
+            {
                  gameVC.emojiChoices = ["🎾","⚽️","🏀","⛷","🏊‍♀️","🏈","🚴🏻‍♂️","⚾️","🥊"]
                  gameVC.halloweenTheme = false
             }

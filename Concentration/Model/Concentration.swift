@@ -92,7 +92,7 @@ class Concentration
             //cards.append(card)
             cards += [card,card]
         }
-        //TODO: Shuffle the deck of cards for homework
+        //Shuffle the deck of cards
         cards.shuffle()
     }
 }
