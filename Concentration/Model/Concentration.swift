@@ -10,6 +10,7 @@ import Foundation
 
 class Concentration
 {
+    var numberOfMatches = 0
     var flipCount = 0
     var scoreCount = 0
     private(set) var cards = [Card]()
@@ -52,13 +53,14 @@ class Concentration
                 //check if the cards match
                 if cards[matchIndex].identifier == cards[index].identifier
                 {
-                    scoreCount = scoreCount + 2
+                    numberOfMatches += 1
+                    scoreCount = scoreCount + 3
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
                 }
                // if they don't match
                 scoreCount = scoreCount - 1
-                if scoreCount < 0{
+                if scoreCount < 0 {
                     scoreCount = 0
                 }
                 cards[index].isFaceUp = true

@@ -61,19 +61,29 @@
                                     <action selector="changeThemeClicked:" destination="cdI-iL-1Sm" eventType="touchUpInside" id="qom-CP-Lu5"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcR-9s-sp1">
+                                <rect key="frame" x="20" y="571" width="378" height="203"/>
+                                <string key="text">Concentration, also known as Match Match, Match Up, Memory, Pelmanism, Shinkei-suijaku, Pexeso or simply Pairs, is a card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards. In this game if your score will be determined by receiving 2 points for every match and penalizing 1 point for every previously seen card that is involved in a mismatch.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="3so-Of-V9K" firstAttribute="centerY" secondItem="lff-aA-mGV" secondAttribute="centerY" id="0kZ-5e-DRD"/>
                             <constraint firstItem="KN1-xK-IKV" firstAttribute="leading" secondItem="lff-aA-mGV" secondAttribute="leading" constant="16" id="1Bk-jA-jaj"/>
+                            <constraint firstItem="hcR-9s-sp1" firstAttribute="top" secondItem="mcv-OM-DHY" secondAttribute="bottom" constant="51" id="8aV-Hp-2QM"/>
                             <constraint firstItem="lff-aA-mGV" firstAttribute="trailing" secondItem="KN1-xK-IKV" secondAttribute="trailing" constant="16" id="D44-2K-ur2"/>
                             <constraint firstItem="mcv-OM-DHY" firstAttribute="top" secondItem="3so-Of-V9K" secondAttribute="bottom" constant="16" id="Dvg-5v-IgG"/>
                             <constraint firstItem="9P6-uT-fk3" firstAttribute="leading" secondItem="lff-aA-mGV" secondAttribute="leading" constant="16" id="Fro-xc-P3g"/>
                             <constraint firstItem="mcv-OM-DHY" firstAttribute="leading" secondItem="lff-aA-mGV" secondAttribute="leading" constant="16" id="JMt-Nr-Gi4"/>
                             <constraint firstItem="3so-Of-V9K" firstAttribute="leading" secondItem="lff-aA-mGV" secondAttribute="leading" constant="16" id="JpW-T3-ULx"/>
+                            <constraint firstItem="hcR-9s-sp1" firstAttribute="leading" secondItem="lff-aA-mGV" secondAttribute="leading" constant="20" id="PhO-1M-VDZ"/>
                             <constraint firstItem="lff-aA-mGV" firstAttribute="trailing" secondItem="3so-Of-V9K" secondAttribute="trailing" constant="16" id="X04-Vp-MFf"/>
                             <constraint firstItem="lff-aA-mGV" firstAttribute="trailing" secondItem="mcv-OM-DHY" secondAttribute="trailing" constant="16" id="gkf-av-2IK"/>
                             <constraint firstItem="9P6-uT-fk3" firstAttribute="top" secondItem="KN1-xK-IKV" secondAttribute="bottom" constant="20" id="jK0-Hj-stk"/>
+                            <constraint firstItem="lff-aA-mGV" firstAttribute="trailing" secondItem="hcR-9s-sp1" secondAttribute="trailing" constant="16" id="m3I-bE-d3f"/>
                             <constraint firstItem="KN1-xK-IKV" firstAttribute="top" secondItem="lff-aA-mGV" secondAttribute="top" constant="100" id="np4-CL-BSN"/>
                             <constraint firstItem="3so-Of-V9K" firstAttribute="top" secondItem="9P6-uT-fk3" secondAttribute="bottom" constant="20" id="rwc-a7-qyT"/>
                             <constraint firstItem="lff-aA-mGV" firstAttribute="trailing" secondItem="9P6-uT-fk3" secondAttribute="trailing" constant="16" id="xN3-d3-PN4"/>
@@ -394,6 +404,7 @@
                         <outletCollection property="cardButtons" destination="f94-fs-s5V" collectionClass="NSMutableArray" id="cI0-In-ITf"/>
                         <outletCollection property="cardButtons" destination="z4K-Tb-Gjd" collectionClass="NSMutableArray" id="BBG-t5-bSs"/>
                         <outletCollection property="cardButtons" destination="sMf-Mw-KLy" collectionClass="NSMutableArray" id="mSh-tR-lda"/>
+                        <segue destination="cdI-iL-1Sm" kind="show" identifier="gameToWelcome" id="yi1-nl-ikV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -401,4 +412,7 @@
             <point key="canvasLocation" x="124.6376811594203" y="24.776785714285712"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="yi1-nl-ikV"/>
+    </inferredMetricsTieBreakers>
 </document>

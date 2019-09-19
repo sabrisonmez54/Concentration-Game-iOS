@@ -32,15 +32,17 @@ class ViewController: UIViewController
             button.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
             }
             mainView.backgroundColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
+            scoreCountLabel.textColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+            flipCountLabel.textColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+            
         }
     }
     
     // lazy meaning leave this variable until class is initialized and initialize it when this variable is used
     private lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count / 2 ))
     
-    private var numberOfPairsOfcards :Int{
-        return((cardButtons.count + 1) / 2)
-    }
+    private lazy var numberOfPairsOfcards = cardButtons.count / 2
+    
     @IBOutlet var mainView: UIView!
     @IBOutlet private weak var flipCountLabel: UILabel!
     @IBOutlet private weak var scoreCountLabel: UILabel!
@@ -82,31 +84,49 @@ class ViewController: UIViewController
     
     private func updateViewFromModel()
     {
-        flipCountLabel.text = "Flips: \(game.flipCount)"
-        scoreCountLabel.text = "Score: \(game.scoreCount)"
-        for index in cardButtons.indices
-        {
-            let button = cardButtons[index]
-            let card = game.cards[index]
-            if card.isFaceUp
+        if numberOfPairsOfcards - game.numberOfMatches > 0{
+            flipCountLabel.text = "Flips: \(game.flipCount)"
+            scoreCountLabel.text = "Score: \(game.scoreCount)"
+            for index in cardButtons.indices
             {
-                button.setTitle(emoji(for: card), for: .normal)
-                button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            }
-            else
-            {
-                button.setTitle("", for: .normal)
-                if card.isMatched
+                let button = cardButtons[index]
+                let card = game.cards[index]
+                if card.isFaceUp
                 {
-                 button.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
-                }else{
-                    if halloweenTheme == true{
-                        button.backgroundColor = #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)
+                    button.setTitle(emoji(for: card), for: .normal)
+                    button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                }
+                else
+                {
+                    button.setTitle("", for: .normal)
+                    if card.isMatched
+                    {
+                        button.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+                    
                     }else{
-                        button.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)}
+                        if halloweenTheme == true{
+                            button.backgroundColor = #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)
+                        }else{
+                            button.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)}
+                    }
                 }
             }
         }
+        else{
+            print("cards done")
+            // create the alert
+            let alert = UIAlertController(title: "Game Over!", message: "You have matched every card. Your score is \(game.scoreCount) in \(game.flipCount) flips.", preferredStyle: UIAlertController.Style.alert)
+            
+            // add an action (button)
+            alert.addAction(UIAlertAction(title: "New Game", style: UIAlertAction.Style.default, handler: alertHandler))
+            
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func alertHandler(alert: UIAlertAction!){
+         self.performSegue(withIdentifier: "gameToWelcome", sender: self)
     }
 }
 
