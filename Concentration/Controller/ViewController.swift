@@ -13,6 +13,8 @@ class ViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        emojiChoices.append(contentsOf: emojiChoices)
+        
     }
     
     // lazy meaning leave this variable until class is initialized and initialize it when this variable is used
@@ -24,7 +26,9 @@ class ViewController: UIViewController
     @IBOutlet private weak var flipCountLabel: UILabel!
     @IBOutlet private var cardButtons: [UIButton]!
     
-    private var emojiChoices = ["👻","🎃","☠️","👹","🍎","🧟‍♂️","🍬","🍫","🍭"]
+    var halloweenTheme : Bool?
+    var emojiChoices : [String]  = []
+        //= ["👻","🎃","☠️","👹","🍎","🧟‍♂️","🍬","🍫","🍭"]
     private(set) var flipCount = 0
     {//everytime the variable changes run this code:
         didSet

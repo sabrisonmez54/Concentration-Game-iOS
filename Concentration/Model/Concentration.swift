@@ -83,5 +83,6 @@ class Concentration
             cards += [card,card]
         }
         //TODO: Shuffle the deck of cards for homework
+        cards.shuffle()
     }
 }
