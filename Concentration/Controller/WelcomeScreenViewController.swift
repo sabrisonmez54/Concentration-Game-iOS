@@ -15,7 +15,6 @@ class WelcomeScreenViewController: UIViewController
     
     @IBOutlet weak var changeThemeButton: UIButton!
     @IBOutlet weak var animationView: LOTAnimatedControl!
-    
     var halloweenTheme = true
     
     override func viewDidLoad()
@@ -31,14 +30,27 @@ class WelcomeScreenViewController: UIViewController
         animationView.animationView.loopAnimation = true
         animationView.animationView.play()
     }
-    @IBAction func changeThemeClicked(_ sender: Any) {
+    @IBAction func changeThemeClicked(_ sender: UIButton) {
+        
+        UIButton.animate(withDuration: 0.2,
+                         animations: {
+                            sender.transform = CGAffineTransform(scaleX: 0.975, y: 0.96)
+        },
+                         completion: { finish in
+                            UIButton.animate(withDuration: 0.2, animations: {
+                                sender.transform = CGAffineTransform.identity
+                            })
+        })
+        
         if halloweenTheme == true
         {
             changeThemeButton.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             changeThemeButton.setTitleColor(#colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1), for: .normal)
             startNewGame.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             startNewGame.setTitleColor(#colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1), for: .normal)
-            controlView.backgroundColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
+            UIView.animate(withDuration: 0.8, animations: {
+                self.controlView.backgroundColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
+            }, completion: nil)
             playAnimation(animationName: "9579-delivery")
             halloweenTheme = false
            
@@ -49,14 +61,25 @@ class WelcomeScreenViewController: UIViewController
             changeThemeButton.setTitleColor(#colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1), for: .normal)
             startNewGame.backgroundColor = #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)
             startNewGame.setTitleColor(#colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1), for: .normal)
-            controlView.backgroundColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
+            UIView.animate(withDuration: 0.8, animations: {
+                self.controlView.backgroundColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
+            }, completion: nil)
             playAnimation(animationName: "3124-halloween-smoothymon")
             halloweenTheme = true
         }
     }
     
-    @IBAction func startNewGameClicked(_ sender: Any)
+    @IBAction func startNewGameClicked(_ sender: UIButton)
     {
+        UIButton.animate(withDuration: 0.2,
+                         animations: {
+                            sender.transform = CGAffineTransform(scaleX: 0.975, y: 0.96)
+        },
+                         completion: { finish in
+                            UIButton.animate(withDuration: 0.2, animations: {
+                                sender.transform = CGAffineTransform.identity
+                            })
+        })
         self.performSegue(withIdentifier: "WelcomeScreenToGame", sender: self)
        
     }
@@ -78,4 +101,5 @@ class WelcomeScreenViewController: UIViewController
             }
         }
     }
+   
 }

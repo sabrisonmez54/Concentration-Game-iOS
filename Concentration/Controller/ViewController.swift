@@ -77,6 +77,15 @@ class ViewController: UIViewController
     {
         if let cardNumber = cardButtons.firstIndex(of: sender)
         {
+            UIButton.animate(withDuration: 0.2,
+                             animations: {
+                                sender.transform = CGAffineTransform(rotationAngle: (CGFloat(Double.pi)))
+            },
+                             completion: { finish in
+                                UIButton.animate(withDuration: 0.2, animations: {
+                                    sender.transform = CGAffineTransform(rotationAngle: (CGFloat(Double.pi * 2)))
+                                })
+            })
             game.chooseCard(at: cardNumber)
             updateViewFromModel()
         }
